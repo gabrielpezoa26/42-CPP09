@@ -1,6 +1,5 @@
 *.o
 .vscode/
-data.csv
 
 #binaries
 btc

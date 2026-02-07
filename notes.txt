@@ -2,3 +2,8 @@
 
 ex00:
 	arrumar makefile
+	parser
+
+
+links:
+	https://en.cppreference.com/w/cpp/container/map.html
