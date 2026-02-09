@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 12:33:19 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/07 11:41:05 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/09 09:40:10 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define BITCOIN_EXCHANGE_HPP
 
 #include <iostream>
+#include <sstream>
+#include <fstream>
 #include <map>
 
 #define BLUE "\033[34m"
@@ -28,6 +30,7 @@ class BitcoinExchange
 {
 	private:
 		std::map<std::string, double> _value;
+		void _readDb();
 
 
 	public:
