@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 12:33:19 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/09 12:30:42 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/09 14:29:42 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@
 #define PURPLE "\033[35m"
 #define RESET "\033[0m"
 
-#define DEBUG true
+#define DEBUG false
 
 class BitcoinExchange
 {
 	private:
 		std::map<std::string, double> _value;
-		void _readDb();
+		void _readDataBase();
 		bool _isDateValid(std::string date);
 		double _validatePrice(std::string price);
 		std::string _trim(const std::string& str);
