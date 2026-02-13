@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:11:50 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/13 11:33:25 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/13 14:12:52 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 		return 1;
-	(void)argv;
-	RPN mango;
-	RPN bbb(mango);
-	mango = bbb;
-	// parseInput()
-	// exec()
+	RPN rpn;
+	try
+	{
+		int result = rpn.calculator(argv[1]);
+		std::cout << result << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return 0;
 }

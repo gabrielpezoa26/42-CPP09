@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:12:06 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/13 11:31:18 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/13 14:12:50 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,16 @@
 
 #include <iostream>
 #include <stack>
+#include <sstream>
+#include <string.h>
+#include <exception>
 
 class RPN
 {
 	private:
 		std::stack<int> _mangoLokoStack;
-
+		bool isValidOperator(std::string op);
+		void exec(const std::string& op, int x, int y);
 
 	public:
 		RPN();
@@ -37,9 +41,18 @@ class RPN
 
 		RPN& operator=(const RPN& other);
 
-		// void parseInput()
-		// void exec();
+		int calculator(const std::string &input);
 
+		class InvalidFormatException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class InvalidTokenException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 
