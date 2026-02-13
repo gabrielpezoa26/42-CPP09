@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 12:33:17 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/09 13:07:21 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:30:48 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int main(int ac, char **av)
 
 	try
 	{
-		BitcoinExchange mangoloko;
-		mangoloko.convert(av[1]);
+		BitcoinExchange btc;
+		btc.convert(av[1]);
 	}
 	catch(const std::exception& e)
 	{

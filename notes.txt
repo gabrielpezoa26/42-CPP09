@@ -1,15 +1,8 @@
 13/02/2026
 
-
-ex01:
-	-> revisar estrutura de código
-	-> trocar nomes
-	-> arrumar as exception
-	-> organizar código
-
-
 	
 
 links:
 	https://en.cppreference.com/w/cpp/container/map.html
+
 	https://medium.com/@interviewbuddies/reverse-polish-notation-b88524252960
