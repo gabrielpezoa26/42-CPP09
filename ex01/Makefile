@@ -27,8 +27,18 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-# run: all
-# 	./$(NAME)
+
+run: all
+	./$(NAME) "7 7 * 7 -"
+
+run2: all
+	./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
+
+run3: all
+	./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
+
+run4 : all
+	./$(NAME) "(1 + 1)"
 
 val: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
