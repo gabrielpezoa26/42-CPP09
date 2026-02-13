@@ -1,11 +1,15 @@
-03/02/2026
+13/02/2026
+
 
 ex01:
-	estudar RPN
-	parser
-	exec
+	-> revisar estrutura de código
+	-> trocar nomes
+	-> arrumar as exception
+	-> organizar código
 
-	colocar exemplos makefile
+
+	
 
 links:
 	https://en.cppreference.com/w/cpp/container/map.html
+	https://medium.com/@interviewbuddies/reverse-polish-notation-b88524252960
