@@ -6,15 +6,13 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:12:06 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/13 14:12:50 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:26:51 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
 #define RPN_HPP
 
-#define BLUE "\033[34m"
-#define YELLOW "\033[33m"
 #define RED "\033[31m"
 #define PURPLE "\033[35m"
 #define RESET "\033[0m"
@@ -30,9 +28,10 @@
 class RPN
 {
 	private:
-		std::stack<int> _mangoLokoStack;
+		std::stack<int> _rpnStack;
 		bool isValidOperator(std::string op);
 		void exec(const std::string& op, int x, int y);
+
 
 	public:
 		RPN();
@@ -43,6 +42,7 @@ class RPN
 
 		int calculator(const std::string &input);
 
+		/* ---------- exceptions ---------- */
 		class InvalidFormatException : public std::exception
 		{
 			public:

@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:12:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/13 14:12:50 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:27:30 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ RPN::RPN()
 		printDebug("Default constructor called");
 }
 
-RPN::RPN(const RPN& other) : _mangoLokoStack(other._mangoLokoStack)
+RPN::RPN(const RPN& other) : _rpnStack(other._rpnStack)
 {
 	if (DEBUG)
 		printDebug("Copy constructor called");
@@ -38,11 +38,12 @@ RPN& RPN::operator=(const RPN& other)
 
 	if (this != &other)
 	{
-		_mangoLokoStack = other._mangoLokoStack;
+		_rpnStack = other._rpnStack;
 	}
 	return *this;
 }
 
+/* ---------- calculator ---------- */
 int RPN::calculator(const std::string &input)
 {
 	if (DEBUG)
@@ -57,17 +58,17 @@ int RPN::calculator(const std::string &input)
 	{
 		if (token.size() == 1 && isdigit(token[0]))
 		{
-			_mangoLokoStack.push(token[0] - '0');
+			_rpnStack.push(token[0] - '0');
 		}
 		else if (isValidOperator(token))
 		{
-			if (_mangoLokoStack.size() < 2)
+			if (_rpnStack.size() < 2)
 				throw InvalidFormatException();
-			int y = _mangoLokoStack.top(); 
-			_mangoLokoStack.pop();
+			int y = _rpnStack.top(); 
+			_rpnStack.pop();
 
-			int x = _mangoLokoStack.top(); 
-			_mangoLokoStack.pop();
+			int x = _rpnStack.top(); 
+			_rpnStack.pop();
 			exec(token, x, y);
 		}
 		else
@@ -75,11 +76,12 @@ int RPN::calculator(const std::string &input)
 			throw InvalidTokenException();
 		}
 	}
-	if (_mangoLokoStack.size() != 1)
+	if (_rpnStack.size() != 1)
 		throw InvalidFormatException();
-	return _mangoLokoStack.top();
+	return _rpnStack.top();
 }
 
+/* ---------- helpers ---------- */
 bool RPN::isValidOperator(std::string op)
 {
 	if (op == "+" || op == "-" || op == "*" || op == "/")
@@ -90,28 +92,28 @@ bool RPN::isValidOperator(std::string op)
 void RPN::exec(const std::string& op, int x, int y)
 {
 	if (op == "+")
-		_mangoLokoStack.push(x + y);
+		_rpnStack.push(x + y);
 	else if (op == "-")
-		_mangoLokoStack.push(x - y);
+		_rpnStack.push(x - y);
 	else if (op == "*")
-		_mangoLokoStack.push(x * y);
+		_rpnStack.push(x * y);
 	else if (op == "/")
 	{
 		if (y == 0)
 			throw InvalidFormatException();
-		_mangoLokoStack.push(x / y);
+		_rpnStack.push(x / y);
 	}
 }
 
+/* ---------- exceptions ---------- */
 const char* RPN::InvalidFormatException::what() const throw()
 {
-	return "vishhh 1";
+	return "Invalid format";
 }
 
 const char* RPN::InvalidTokenException::what() const throw()
 {
-	return "vishhh 2";
-
+	return "Unexpected token";
 }
 
 /* ---------- utilities ---------- */
