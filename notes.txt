@@ -1,10 +1,11 @@
 03/02/2026
 
-ex00:
+ex01:
+	estudar RPN
 	parser
-		-> loadDb()
-		-> exceptions
+	exec
 
+	colocar exemplos makefile
 
 links:
 	https://en.cppreference.com/w/cpp/container/map.html

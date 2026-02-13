@@ -27,8 +27,8 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-run: all
-	./$(NAME)
+# run: all
+# 	./$(NAME)
 
 val: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
