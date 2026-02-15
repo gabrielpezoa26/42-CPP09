@@ -6,7 +6,14 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/13 16:09:41 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/15 10:18:12 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "PmergeMe.hpp"
+
+int main()
+{
+	log("foiii");
+	return 0;
+}
