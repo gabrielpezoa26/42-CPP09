@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:48 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/15 15:59:08 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/16 17:04:56 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,34 @@
 #include <sstream>
 #include <set>
 
-
 class PmergeMe
 {
 	private:
-		std::vector<int> _vector;
-		std::deque<int> _deque;
+		std::vector<int> _stored_vector;
+		std::deque<int> _stored_deque;
 
 
 	public:
 		PmergeMe();
 		PmergeMe(const PmergeMe& other);
 		~PmergeMe();
-
 		PmergeMe& operator=(const PmergeMe& other);
-		void parseInput(int argc, char **argv);
 
-	
+		void parseInput(int argc, char **argv);
+		void sortVector();
 };
+
+template <typename T>
+void printObject(const T& obj)
+{
+	if (DEBUG)
+		std::cout << PURPLE << "printObject<> template called" << RESET << std::endl;
+
+	typename T::const_iterator start = obj.begin();
+	for (; start != obj.end(); ++start)
+		std::cout << " " << *start;
+	std::cout << std::endl;
+}
 
 
 /* ---------- utilities ---------- */

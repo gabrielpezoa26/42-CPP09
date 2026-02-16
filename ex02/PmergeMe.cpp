@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:45 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/15 16:04:06 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/16 17:06:12 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ PmergeMe::PmergeMe()
 }
 
 PmergeMe::PmergeMe(const PmergeMe& other)
- : _vector(other._vector), _deque(other._deque)
+ : _stored_vector(other._stored_vector), _stored_deque(other._stored_deque)
 {
 	if (DEBUG)
 		printDebug("Copy constructor called");
@@ -38,8 +38,8 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 
 	if (this != &other)
 	{
-		_vector = other._vector;
-		_deque = other._deque;
+		_stored_vector = other._stored_vector;
+		_stored_deque = other._stored_deque;
 	}
 	return *this;
 }
@@ -47,7 +47,7 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 void PmergeMe::parseInput(int argc, char**argv)
 {
 	if (DEBUG)
-		printDebug("parseInput() called");
+		printDebug("parseInput() method called");
 
 	std::set<int> set;
 	for (int i = 1; i < argc; ++i)
@@ -60,13 +60,19 @@ void PmergeMe::parseInput(int argc, char**argv)
 		if (!(iss >> value) || (iss >> extra) || value < 0)
 			throw std::runtime_error("Invalid input :(");
 		if (!set.insert(value).second)
-			throw std::runtime_error("Duplicated value present");
-		_vector.push_back(value);
-		_deque.push_back(value);
+			throw std::runtime_error("Duplicated value present :/");
+		_stored_vector.push_back(value);
+		_stored_deque.push_back(value);
 	}
 	printDebug("deu bommm");
 }
 
+void PmergeMe::sortVector()
+{
+	if (DEBUG)
+		printDebug("sortVector() method called");
+	printObject(_stored_vector);
+}
 
 /* ---------- utilities ---------- */
 void log(std::string message) { std::cout << message << std::endl; }
