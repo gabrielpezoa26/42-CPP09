@@ -1,6 +1,8 @@
 15/02/2026
 
-	
+ex02:
+	sortVector()
+		-> fzr funçoes auxiliares
 
 links:
 	https://en.cppreference.com/w/cpp/container/map.html
