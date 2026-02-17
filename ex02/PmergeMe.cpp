@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:45 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/16 17:06:12 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/16 17:21:14 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void PmergeMe::parseInput(int argc, char**argv)
 		_stored_vector.push_back(value);
 		_stored_deque.push_back(value);
 	}
-	printDebug("deu bommm");
 }
 
 void PmergeMe::sortVector()
@@ -72,6 +71,8 @@ void PmergeMe::sortVector()
 	if (DEBUG)
 		printDebug("sortVector() method called");
 	printObject(_stored_vector);
+	
+	std::vector<int> sorted_vector = mergeSort<std::vector<int> >(this->_stored_vector);
 }
 
 /* ---------- utilities ---------- */

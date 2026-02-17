@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:48 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/16 17:04:56 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/16 18:31:13 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #include <exception>
 #include <sstream>
 #include <set>
+#include <ctime>
 
 class PmergeMe
 {
@@ -54,6 +55,17 @@ void printObject(const T& obj)
 	std::cout << std::endl;
 }
 
+template <typename T>
+T mergeSort(T& input)
+{
+	if (DEBUG)
+		std::cout << PURPLE << "mergeSort<> template called" << RESET << std::endl;
+
+	if (input.size() <= 1)
+		return input;
+	
+	return input; // apagar
+}
 
 /* ---------- utilities ---------- */
 void log(std::string message);
