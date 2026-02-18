@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:48 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/17 09:39:41 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/18 09:21:08 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@
 #include <sstream>
 #include <set>
 #include <ctime>
+#include <iomanip>
 
 class PmergeMe
 {
 	private:
-		std::vector<int> _stored_vector;
-		std::deque<int> _stored_deque;
+		std::vector<int> _vector;
+		std::deque<int> _deque;
 
 
 	public:
@@ -105,6 +106,24 @@ T fordJohnsonSort(T& input)
 	T sorted = fordJohnsonSort<T>(main_chain);
 	insertPendElements(sorted, pending);
 	return (sorted);
+}
+
+template <typename T>
+bool isSorted(const T& container)
+{
+	if (container.size() < 2)
+		return (true);
+	typename T::const_iterator begin = container.begin();
+	typename T::const_iterator end = begin;
+	++end;
+	while (end != container.end())
+	{
+		if (*begin > *end)
+			return (false);
+		++begin;
+		++end;
+	}
+	return (true);
 }
 
 /* ---------- utilities ---------- */

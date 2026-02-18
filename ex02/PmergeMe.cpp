@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:45 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/18 09:06:46 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:49:42 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ PmergeMe::PmergeMe()
 }
 
 PmergeMe::PmergeMe(const PmergeMe& other)
- : _stored_vector(other._stored_vector), _stored_deque(other._stored_deque)
+ : _vector(other._vector), _deque(other._deque)
 {
 	if (DEBUG)
 		printDebug("Copy constructor called");
@@ -38,8 +38,8 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 
 	if (this != &other)
 	{
-		_stored_vector = other._stored_vector;
-		_stored_deque = other._stored_deque;
+		_vector = other._vector;
+		_deque = other._deque;
 	}
 	return *this;
 }
@@ -61,8 +61,8 @@ void PmergeMe::parseInput(int argc, char**argv)
 			throw std::runtime_error("Invalid input :(");
 		if (!set.insert(value).second)
 			throw std::runtime_error("Duplicated value present :/");
-		_stored_vector.push_back(value);
-		_stored_deque.push_back(value);
+		_vector.push_back(value);
+		_deque.push_back(value);
 	}
 }
 
@@ -70,12 +70,22 @@ void PmergeMe::sortVector()
 {
 	if (DEBUG)
 		printDebug("sortVector() method called");
-	printObject(_stored_vector);
-	
-	std::vector<int> sorted_vector = fordJohnsonSort<std::vector<int> >(this->_stored_vector);
+	printObject(_vector);
+
+	std::clock_t start_time = clock();
+	std::vector<int> sorted_vector = fordJohnsonSort<std::vector<int> >(this->_vector);
+	std::clock_t finish_time = clock();
+
+	if (!isSorted<std::vector<int> >(sorted_vector))
+			throw (std::runtime_error("error during sort vector"));
+	std::cout << "after sorting:\t";
+	printObject(sorted_vector);
+	double	elapsed_time_us = static_cast<double>(finish_time - start_time) * 1000000 / CLOCKS_PER_SEC;
+	std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : "
+			  << std::setprecision(5) << elapsed_time_us << " us" << std::endl;
 }
 
-std::vector<int> jacobSthalIndices(size_t n)
+mstd::vector<int> jacobSthalIndices(size_t n)
 {
 	if (DEBUG)
 		printDebug("jacobSthalIndices() function called");
