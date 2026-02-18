@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:45 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/16 17:21:14 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/18 09:06:46 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,41 @@ void PmergeMe::sortVector()
 		printDebug("sortVector() method called");
 	printObject(_stored_vector);
 	
-	std::vector<int> sorted_vector = mergeSort<std::vector<int> >(this->_stored_vector);
+	std::vector<int> sorted_vector = fordJohnsonSort<std::vector<int> >(this->_stored_vector);
 }
+
+std::vector<int> jacobSthalIndices(size_t n)
+{
+	if (DEBUG)
+		printDebug("jacobSthalIndices() function called");
+
+	std::vector<int> insertion_sequence;
+	std::set<int> processed_indices;
+
+	for (int j = 2; insertion_sequence.size() < n; ++j) {
+		int num = jacobSthalAlgo(j);
+		if (num > static_cast<int>(n))
+			num = static_cast<int>(n);
+		while (num > 0 && !processed_indices.count(num))
+		{
+			insertion_sequence.push_back(num);
+			processed_indices.insert(num);
+			--num;
+		}
+	}
+	return (insertion_sequence);
+}
+
+int jacobSthalAlgo(int n)
+{
+	if (n == 0)
+		return (0);
+	if (n == 1)
+		return (1);
+	return (jacobSthalAlgo(n - 1) + 2 * jacobSthalAlgo(n - 2));
+}
+
+
 
 /* ---------- utilities ---------- */
 void log(std::string message) { std::cout << message << std::endl; }
