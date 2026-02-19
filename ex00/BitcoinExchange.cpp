@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 12:33:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/19 10:58:30 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:47:27 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,14 @@ bool BitcoinExchange::_isDateValid(std::string date)
 		return (false);
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
 		return false;
-	if (month == 2 && day > 28)
-		return false;
+	if (month == 2)
+	{
+		bool isLeapYear = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+		if (isLeapYear && day > 29)
+			return false;
+		if (!isLeapYear && day > 28)
+			return false;
+	}
 	return (true);
 }
 
