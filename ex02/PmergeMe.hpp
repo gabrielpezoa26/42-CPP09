@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:48 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/19 08:56:00 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 09:03:11 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,6 @@ void insertPendElements(T& sorted, T& pending_elements)
 template <typename T>
 T fordJohnsonSort(T& input)
 {
-	if (DEBUG)
-		std::cout << PURPLE << "fordJohnsonSort<> template called" << RESET << std::endl;
-
 	if (input.size() <= 1)
 		return input;
 	int unpaired_element = -1;

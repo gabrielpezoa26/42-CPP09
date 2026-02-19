@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 12:33:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/19 08:34:11 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 10:58:30 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,13 +128,16 @@ bool BitcoinExchange::_isDateValid(std::string date)
 
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		return (false);
-
 	int year = std::atoi(date.substr(0, 4).c_str());
 	int month = std::atoi(date.substr(5, 2).c_str());
 	int day = std::atoi(date.substr(8, 2).c_str());
 
 	if (year < 2009 || month < 1 || month > 12 || day < 1 || day > 31)
 		return (false);
+	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+		return false;
+	if (month == 2 && day > 28)
+		return false;
 	return (true);
 }
 

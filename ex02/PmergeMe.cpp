@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:45 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/19 08:58:31 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 09:59:17 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,14 @@ void PmergeMe::sortVector()
 
 void	PmergeMe::sortDeque(void)
 {
+	if (DEBUG)
+		printDebug("sortDeque() method called");
 	std::clock_t	start_time = clock();
 	std::deque<int>	sorted_deque = fordJohnsonSort<std::deque<int> >(_deque);
 	std::clock_t	finish = clock();
 
 	if (!isSorted<std::deque<int> >(sorted_deque))
-		throw (std::runtime_error("sorting deque failed"));
+		throw (std::runtime_error("error during sort deque"));
 
 	double	elapsed_time_us = static_cast<double>(finish - start_time) * 1000000 / CLOCKS_PER_SEC;
 	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque  : "
@@ -108,7 +110,8 @@ std::vector<int> jacobSthalIndices(size_t n)
 	std::vector<int> insertion_sequence;
 	std::set<int> processed_indices;
 
-	for (int j = 2; insertion_sequence.size() < n; ++j) {
+	for (int j = 2; insertion_sequence.size() < n; ++j)
+	{
 		int num = jacobSthalAlgo(j);
 		if (num > static_cast<int>(n))
 			num = static_cast<int>(n);
