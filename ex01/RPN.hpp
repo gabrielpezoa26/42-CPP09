@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:12:06 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/13 15:26:51 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 08:25:05 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #define PURPLE "\033[35m"
 #define RESET "\033[0m"
 
-#define DEBUG true
+#define DEBUG false
 
 #include <iostream>
 #include <stack>

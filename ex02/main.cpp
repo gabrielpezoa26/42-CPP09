@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/16 17:08:42 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 08:53:07 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int main(int argc, char **argv)
 		PmergeMe x;
 		x.parseInput(argc, argv);
 		x.sortVector();
-		// exec deque
-		// printa resultado
+		x.sortDeque();
 	}
 	catch(const std::exception& e)
 	{

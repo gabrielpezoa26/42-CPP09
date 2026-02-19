@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:45 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/18 15:49:42 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 08:58:31 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void PmergeMe::parseInput(int argc, char**argv)
 		char extra;
 
 		if (!(iss >> value) || (iss >> extra) || value < 0)
-			throw std::runtime_error("Invalid input :(");
+			throw std::runtime_error("Error");
 		if (!set.insert(value).second)
 			throw std::runtime_error("Duplicated value present :/");
 		_vector.push_back(value);
@@ -70,6 +70,7 @@ void PmergeMe::sortVector()
 {
 	if (DEBUG)
 		printDebug("sortVector() method called");
+	std::cout << "Before:\t";
 	printObject(_vector);
 
 	std::clock_t start_time = clock();
@@ -78,14 +79,28 @@ void PmergeMe::sortVector()
 
 	if (!isSorted<std::vector<int> >(sorted_vector))
 			throw (std::runtime_error("error during sort vector"));
-	std::cout << "after sorting:\t";
+	std::cout << "After\t";
 	printObject(sorted_vector);
 	double	elapsed_time_us = static_cast<double>(finish_time - start_time) * 1000000 / CLOCKS_PER_SEC;
 	std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : "
 			  << std::setprecision(5) << elapsed_time_us << " us" << std::endl;
 }
 
-mstd::vector<int> jacobSthalIndices(size_t n)
+void	PmergeMe::sortDeque(void)
+{
+	std::clock_t	start_time = clock();
+	std::deque<int>	sorted_deque = fordJohnsonSort<std::deque<int> >(_deque);
+	std::clock_t	finish = clock();
+
+	if (!isSorted<std::deque<int> >(sorted_deque))
+		throw (std::runtime_error("sorting deque failed"));
+
+	double	elapsed_time_us = static_cast<double>(finish - start_time) * 1000000 / CLOCKS_PER_SEC;
+	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque  : "
+			  << std::setprecision(5) << elapsed_time_us << " us" << std::endl;
+}
+
+std::vector<int> jacobSthalIndices(size_t n)
 {
 	if (DEBUG)
 		printDebug("jacobSthalIndices() function called");

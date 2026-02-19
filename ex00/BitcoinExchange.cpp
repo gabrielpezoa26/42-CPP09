@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 12:33:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/09 14:32:48 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 08:34:11 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,13 @@ void BitcoinExchange::_readDataBase()
 
 	std::ifstream input_file("data.csv");
 	if (!input_file.is_open())
-		log("vishhhh");
+		throw std::runtime_error("Error: could not open file.");
 	
 	std::string line;
 	std::getline(input_file, line);
 	if (line != "date,exchange_rate")
-		log("vishhhh 2");
+		throw std::runtime_error("Error: file is missing header or empty");
+
 	while (std::getline(input_file, line))
 	{
 		std::string date;
@@ -114,7 +115,7 @@ void BitcoinExchange::_readDataBase()
 		double price_value;
 		std::istringstream price_stream(price);
 		if(!(price_stream >> price_value))
-			log("vishhh 3");
+			log("Error: invalid price format in database");
 		_value[date] = price_value;
 	}
 	input_file.close();

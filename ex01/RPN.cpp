@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:12:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/13 15:27:30 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 08:45:06 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int RPN::calculator(const std::string &input)
 		{
 			if (_rpnStack.size() < 2)
 				throw InvalidFormatException();
-			int y = _rpnStack.top(); 
+			int y = _rpnStack.top();
 			_rpnStack.pop();
 
 			int x = _rpnStack.top(); 
@@ -113,7 +113,7 @@ const char* RPN::InvalidFormatException::what() const throw()
 
 const char* RPN::InvalidTokenException::what() const throw()
 {
-	return "Unexpected token";
+	return "Error";
 }
 
 /* ---------- utilities ---------- */

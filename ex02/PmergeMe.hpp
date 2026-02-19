@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 16:09:48 by gcesar-n          #+#    #+#             */
-/*   Updated: 2026/02/18 09:21:08 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2026/02/19 08:56:00 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define RED "\033[31m"
 #define PURPLE "\033[35m"
 #define RESET "\033[0m"
-#define DEBUG true
+#define DEBUG false
 
 #include <iostream>
 #include <vector>
@@ -42,6 +42,7 @@ class PmergeMe
 
 		void parseInput(int argc, char **argv);
 		void sortVector();
+		void sortDeque();
 };
 
 template <typename T>
@@ -49,7 +50,7 @@ void printObject(const T& obj)
 {
 	if (DEBUG)
 		std::cout << PURPLE << "printObject<> template called" << RESET << std::endl;
-
+	
 	typename T::const_iterator start = obj.begin();
 	for (; start != obj.end(); ++start)
 		std::cout << " " << *start;
