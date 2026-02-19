@@ -41,6 +41,6 @@ run4 : all
 	./$(NAME) "(1 + 1)"
 
 val: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
 
 re: fclean all
